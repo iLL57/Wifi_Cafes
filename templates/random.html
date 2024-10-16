@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %} Café Roulette {% endblock %}
+
+{% block content %}
+
+<div class="page-title dark-background" style="background-image: url('{{ url_for('static', filename='img/page-title-bg.webp') }}');">
+  <div class="container position-relative">
+    <h1>Your Random Café is...</h1>
+    <nav class="breadcrumbs">
+      <ol>
+        <li><a class="bc-link" href="{{ url_for('home') }}">Home</a></li>
+        <li class="current">{{ cafe.name }}</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+
+<!-- Cafes Section -->
+<section id="team" class="team section">
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <a class="cafe-btn" href="{{ url_for('get_random_cafe') }}">Another Random Cafe</a>
+    </div><!-- End Section Title -->
+
+    <div class="container">
+        <div class="b-example-divider"></div> <!-- /Random Cafe Item -->
+        <div class="container px-4 py-5 cafe-location-item">
+            <h2 class="pb-2 border-top">{{ cafe.name }}</h2>
+            <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
+                <div class="content col-xl-5 d-flex flex-column" data-aos="fade-up" data-aos-delay="100">
+                    <img src="{{ cafe.img_url }}" alt="Image of Café" class="img-fluid map-img">
+                    <br>
+                    <a href="{{ cafe.map_url }}" target="_blank" class="cafe-btn">Show on Map</a>
+                </div>
+
+                <div class="col cafe-location-item">
+                    <div class="row row-cols-1 row-cols-md-3 g-4">
+                      <div class="col center-content gap-2">
+                        <div class="feature-icon-small d-inline-flex align-items-center justify-content-center bg-gradient fs-4 rounded-3" style="background-color: #d74f31;">
+                          <svg class="cafe-item-bi">
+                            <use xlink:href="#collection" />
+                          </svg>
+                        </div>
+                        <h4 class="fw-semibold mb-0 text-body-emphasis">Power Sockets</h4>
+                        <p class="text-body-secondary cafe-emoji" >{{ '🔌' if cafe.has_sockets else '❌' }}</p>
+                      </div>
+
+                      <div class="col center-content gap-2">
+                        <div class="feature-icon-small d-inline-flex align-items-center justify-content-center bg-gradient fs-4 rounded-3" style="background-color: #d74f31;">
+                          <svg class="cafe-item-bi">
+                            <use xlink:href="#gear-fill" />
+                          </svg>
+                        </div>
+                        <h4 class="fw-semibold mb-0 text-body-emphasis">Free Wifi</h4>
+                        <p class="text-body-secondary cafe-emoji">{{ '🛜' if cafe.has_wifi else '❌' }}</p>
+                      </div>
+
+                      <div class="col center-content gap-2 ">
+                        <div class="feature-icon-small d-inline-flex align-items-center justify-content-center bg-gradient fs-4 rounded-3" style="background-color: #d74f31;">
+                          <svg class="cafe-item-bi">
+                            <use xlink:href="#speedometer" />
+                          </svg>
+                        </div>
+                        <h4 class="fw-semibold mb-0 text-body-emphasis">Bathrooms</h4>
+                        <p class="text-body-secondary cafe-emoji">{{ '🚻' if cafe.has_toilet else '❌' }}</p>
+                      </div>
+
+                      <div class="col center-content gap-2">
+                        <div class="feature-icon-small d-inline-flex align-items-center justify-content-center bg-gradient fs-4 rounded-3" style="background-color: #d74f31;">
+                          <svg class="cafe-item-bi">
+                            <use xlink:href="#table" />
+                          </svg>
+                        </div>
+                        <h4 class="fw-semibold mb-0 text-body-emphasis">Good for Calls</h4>
+                        <p class="text-body-secondary cafe-emoji">{{ '📶' if cafe.can_take_calls else '❌' }}</p>
+                      </div>
+
+                      <div class="col center-content gap-2">
+                        <div class="feature-icon-small d-inline-flex align-items-center justify-content-center bg-gradient fs-4 rounded-3" style="background-color: #d74f31;">
+                          <svg class="cafe-item-bi">
+                            <use xlink:href="#table" />
+                          </svg>
+                        </div>
+                        <h4 class="fw-semibold mb-0 text-body-emphasis">Seats</h4>
+                        <p class="text-body-secondary cafe-emoji">{{ cafe.seats }}</p>
+                      </div>
+
+                      <div class="col center-content gap-2">
+                        <div class="feature-icon-small d-inline-flex align-items-center justify-content-center bg-gradient fs-4 rounded-3" style="background-color: #d74f31;">
+                          <svg class="cafe-item-bi">
+                            <use xlink:href="#table" />
+                          </svg>
+                        </div>
+                        <h4 class="fw-semibold mb-0 text-body-emphasis">Coffee Price</h4>
+                        <p class="text-body-secondary cafe-emoji">{{ cafe.coffee_price }}</p>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

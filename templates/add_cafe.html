@@ -1,0 +1,41 @@
+{% from "bootstrap5/form.html" import render_form %}
+{% extends "base.html" %}
+
+{% block title %}Add a Café{% endblock %}
+
+{% block content %}
+    <!-- Page Title -->
+    <div class="page-title dark-background" style="background-image: url('{{ url_for('static', filename='img/page-title-bg.webp') }}');">
+      <div class="container position-relative">
+        <h1>Add a Café</h1>
+        <p>Fill out the form to add a new café to the list.</p>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li class="current">Add a Café</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+    <!-- Form Section -->
+    <section id="add-cafe-section" class="starter-section section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Add a New Café</h2>
+        <p><span>Add</span> <span class="description-title">Café Form<br></span></p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up">
+        <div class="col-md-8 offset-md-2">
+          {{ render_form(cafe_form) }}
+        </div>
+      </div>
+    </section><!-- /Form Section -->
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+{% endblock %}

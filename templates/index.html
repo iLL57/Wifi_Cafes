@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Local Cafes{% endblock %}
+
+{% block content %}
+<div class="page-title dark-background" style="background-image: url({{ url_for('static', filename='img/page-title-bg.webp') }});">
+    <div class="container position-relative">
+        <h1>Sacramento Cafes</h1>
+        <p>Check out a list of our cafes!</p>
+    </div>
+</div>
+
+<section id="starter-section" class="main">
+    <div class="container section-title" data-aos="fade-up">
+        <div class="card" style="width: 18rem;">
+            <img src="{{ url_for('static', filename='img/cafe1.jpg') }}" class="card-img-top" alt="Cafe 1">
+            <div class="card-body">
+                <h5 class="card-title">Cafe 1</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+    <div class="container" data-aos="fade-up">
+        <p>Use this page as a starter for your own custom pages.</p>
+    </div>
+</section>
+{% endblock %}
